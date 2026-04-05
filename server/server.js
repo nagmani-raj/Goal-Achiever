@@ -12,8 +12,28 @@ connectDB();
 
 const app = express();
 
+const allowedOrigins = [
+  'http://localhost:5173',
+  'http://127.0.0.1:5173',
+  'https://goal-achiever-orcin.vercel.app',
+  ...(process.env.CLIENT_URL
+    ? process.env.CLIENT_URL.split(',').map((origin) => origin.trim()).filter(Boolean)
+    : []),
+];
+
 // Middleware
-app.use(cors());
+app.use(
+  cors({
+    origin(origin, callback) {
+      // Allow requests without Origin, such as health checks or server-to-server calls.
+      if (!origin || allowedOrigins.includes(origin)) {
+        return callback(null, true);
+      }
+
+      return callback(new Error('Not allowed by CORS'));
+    },
+  })
+);
 app.use(express.json());
 
 // Routes
