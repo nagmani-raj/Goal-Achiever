@@ -1,0 +1,66 @@
+.pie-chart-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+.pie-chart-svg {
+  filter: drop-shadow(0 0 12px var(--accent-primary-glow));
+  transition: transform var(--transition-normal);
+}
+
+.pie-chart-svg:hover {
+  transform: scale(1.05);
+}
+
+.pie-chart-arc {
+  transition: stroke-dasharray 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.pie-chart-percent {
+  fill: var(--text-primary);
+  font-size: 1.4rem;
+  font-weight: 800;
+  font-family: 'Inter', sans-serif;
+}
+
+.pie-chart-sub {
+  fill: var(--text-muted);
+  font-size: 0.65rem;
+  font-weight: 500;
+  font-family: 'Inter', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.pie-chart-legend {
+  display: flex;
+  gap: 20px;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.legend-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
+.legend-completed {
+  background: linear-gradient(135deg, #6c5ce7, #00cec9);
+}
+
+.legend-pending {
+  background: rgba(225, 112, 85, 0.5);
+}
+
+.legend-text {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  font-weight: 500;
+}
