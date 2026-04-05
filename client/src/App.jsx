@@ -2,6 +2,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Layout from './components/layout/Layout';
 import { NotificationProvider } from './context/NotificationContext';
 import Dashboard from './pages/Dashboard';
+import DeleteItemsPage from './pages/DeleteItemsPage';
 import MonthlyPage from './pages/MonthlyPage';
 import DailyPage from './pages/DailyPage';
 import TargetTopicsPage from './pages/TargetTopicsPage';
@@ -17,6 +18,7 @@ function App() {
             <Route path="monthly" element={<MonthlyPage />} />
             <Route path="daily" element={<DailyPage />} />
             <Route path="targets" element={<TargetTopicsPage />} />
+            <Route path="delete-items" element={<DeleteItemsPage />} />
           </Route>
         </Routes>
       </BrowserRouter>

@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { monthlyAPI } from '../../services/api';
 import { getCurrentMonth, formatMonthDisplay } from '../../utils/helpers';
 import { useNotifications } from '../../context/NotificationContext';
+import { notifyDataChanged } from '../../utils/dataSync';
 import ProgressBar from '../common/ProgressBar';
 import './MonthlyGoals.css';
 
@@ -49,6 +50,7 @@ const MonthlyGoals = () => {
       await monthlyAPI.create({ month: currentMonth, target: newTarget.trim() });
       setNewTarget('');
       await fetchGoals();
+      notifyDataChanged();
       showSuccess('Successfully added.');
     } catch (err) {
       const message = err?.response?.data?.message || 'Unable to add monthly goal';
@@ -73,6 +75,7 @@ const MonthlyGoals = () => {
       await monthlyAPI.delete(id);
       setErrorMessage('');
       await fetchGoals();
+      notifyDataChanged();
     } catch (err) {
       console.error('Error deleting goal:', err);
     }

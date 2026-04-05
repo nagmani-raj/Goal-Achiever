@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useState } from 'react';
 import { targetAPI } from '../../services/api';
 import { useNotifications } from '../../context/NotificationContext';
+import { notifyDataChanged } from '../../utils/dataSync';
 import ProgressBar from '../common/ProgressBar';
 import './TargetTopics.css';
 
@@ -183,6 +184,7 @@ const TargetTopics = () => {
       });
       resetForm();
       await fetchTopics();
+      notifyDataChanged();
       showSuccess('Successfully added.');
     } catch (error) {
       const message = error?.response?.data?.message || 'Unable to add target topic';
@@ -220,6 +222,7 @@ const TargetTopics = () => {
       await targetAPI.extend(topicId, extraDays);
       setExtendInputs((prev) => ({ ...prev, [topicId]: '' }));
       await fetchTopics();
+      notifyDataChanged();
     } catch (error) {
       console.error('Error extending target topic:', error);
     } finally {
@@ -234,6 +237,7 @@ const TargetTopics = () => {
       setQuestionError('');
       setExpandedId((prev) => (prev === topicId ? null : prev));
       await fetchTopics();
+      notifyDataChanged();
     } catch (error) {
       console.error('Error deleting target topic:', error);
     }
@@ -259,6 +263,7 @@ const TargetTopics = () => {
       setQuestionError('');
       resetForm();
       await fetchTopics();
+      notifyDataChanged();
     } catch (error) {
       console.error('Error resetting target topics:', error);
     } finally {
@@ -278,6 +283,7 @@ const TargetTopics = () => {
       await targetAPI.removeName(name, listType);
 
       await fetchTopics();
+      notifyDataChanged();
     } catch (error) {
       console.error('Error removing saved topic name:', error);
     }

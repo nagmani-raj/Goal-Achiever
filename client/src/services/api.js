@@ -18,6 +18,7 @@ export const monthlyAPI = {
 
 // ─── Daily Goals ───
 export const dailyAPI = {
+  getAllTopics: () => api.get('/daily'),
   get: (date) => api.get(`/daily/${date}`),
   addTopic: (date, data) => api.post(`/daily/${date}/topic`, data),
   addWork: (date, topicId, data) => api.post(`/daily/${date}/topic/${topicId}/work`, data),

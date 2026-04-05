@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const {
+  getAllTopicSummaries,
   getDailyGoals,
   addTopic,
   addWork,
@@ -9,6 +10,7 @@ const {
   deleteWork,
 } = require('../controllers/dailyController');
 
+router.get('/', getAllTopicSummaries);
 router.get('/:date', getDailyGoals);
 router.post('/:date/topic', addTopic);
 router.post('/:date/topic/:topicId/work', addWork);

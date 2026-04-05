@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { dailyAPI, streakAPI } from '../../services/api';
 import { getToday, formatDateDisplay, calcTopicPercentage, calcDailyPercentage } from '../../utils/helpers';
 import { useNotifications } from '../../context/NotificationContext';
+import { notifyDataChanged } from '../../utils/dataSync';
 import ProgressBar from '../common/ProgressBar';
 import './DailyGoals.css';
 
@@ -51,6 +52,7 @@ const DailyGoals = () => {
       await dailyAPI.addTopic(date, { title: newTopic.trim() });
       setNewTopic('');
       await fetchDaily();
+      notifyDataChanged();
       showSuccess('Successfully added.');
     } catch (err) {
       const message = err?.response?.data?.message || 'Unable to add daily topic';
@@ -70,6 +72,7 @@ const DailyGoals = () => {
       await dailyAPI.addWork(date, topicId, { text: text.trim() });
       setWorkInputs(prev => ({ ...prev, [topicId]: '' }));
       await fetchDaily();
+      notifyDataChanged();
       showSuccess('Successfully added.');
     } catch (err) {
       console.error('Error adding work:', err);
@@ -93,6 +96,7 @@ const DailyGoals = () => {
       await dailyAPI.deleteTopic(date, topicId);
       setTopicError('');
       await fetchDaily();
+      notifyDataChanged();
     } catch (err) {
       console.error('Error deleting topic:', err);
     }
@@ -102,6 +106,7 @@ const DailyGoals = () => {
     try {
       await dailyAPI.deleteWork(date, topicId, workId);
       await fetchDaily();
+      notifyDataChanged();
     } catch (err) {
       console.error('Error deleting work:', err);
     }

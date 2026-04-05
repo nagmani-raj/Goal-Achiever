@@ -1,5 +1,26 @@
 const DailyGoal = require('../models/DailyGoal');
 
+// Get all daily topic summaries across dates
+exports.getAllTopicSummaries = async (req, res, next) => {
+  try {
+    const dailyEntries = await DailyGoal.find()
+      .select('date topics._id topics.title')
+      .sort({ date: -1, createdAt: -1 });
+
+    const summaries = dailyEntries.flatMap((entry) => (
+      (entry.topics || []).map((topic) => ({
+        _id: topic._id,
+        title: topic.title,
+        date: entry.date,
+      }))
+    ));
+
+    res.json({ success: true, data: summaries });
+  } catch (error) {
+    next(error);
+  }
+};
+
 // Get daily goals for a specific date
 exports.getDailyGoals = async (req, res, next) => {
   try {
