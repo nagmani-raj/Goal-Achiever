@@ -48,8 +48,7 @@
 .stat-card {
   padding: 20px;
   display: flex;
-  align-items: center;
-  gap: 14px;
+  align-items: flex-start;
   min-width: 0;
   transition: all var(--transition-normal);
   opacity: 0;
@@ -62,26 +61,11 @@
   border-color: var(--border-glow);
 }
 
-.stat-icon {
-  font-size: 1.8rem;
-  width: 48px;
-  height: 48px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: var(--radius-md);
-}
-
-.stat-icon-tasks { background: rgba(108, 92, 231, 0.12); }
-.stat-icon-done { background: rgba(0, 184, 148, 0.12); }
-.stat-icon-topics { background: rgba(253, 203, 110, 0.12); }
-.stat-icon-monthly { background: rgba(0, 206, 201, 0.12); }
-.stat-icon-target { background: rgba(255, 177, 118, 0.12); }
-
 .stat-info {
   display: flex;
   flex-direction: column;
   min-width: 0;
+  gap: 6px;
 }
 
 .stat-value {
@@ -97,7 +81,6 @@
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.3px;
-  margin-top: 4px;
   line-height: 1.25;
   word-break: break-word;
 }

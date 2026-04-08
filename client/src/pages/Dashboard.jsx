@@ -70,35 +70,30 @@ const Dashboard = () => {
         <div className="dashboard-main">
           <div className="stats-row stats-row-five">
             <div className="stat-card glass animate-fadeIn" style={{ animationDelay: '0.1s' }}>
-              <div className="stat-icon stat-icon-tasks">T</div>
               <div className="stat-info">
                 <div className="stat-value">{totalWorks}</div>
                 <div className="stat-label">Today's Tasks</div>
               </div>
             </div>
             <div className="stat-card glass animate-fadeIn" style={{ animationDelay: '0.2s' }}>
-              <div className="stat-icon stat-icon-done">C</div>
               <div className="stat-info">
                 <div className="stat-value">{completedWorks}</div>
                 <div className="stat-label">Completed</div>
               </div>
             </div>
             <div className="stat-card glass animate-fadeIn" style={{ animationDelay: '0.3s' }}>
-              <div className="stat-icon stat-icon-topics">P</div>
               <div className="stat-info">
                 <div className="stat-value">{topics.length}</div>
                 <div className="stat-label">Topics</div>
               </div>
             </div>
             <div className="stat-card glass animate-fadeIn" style={{ animationDelay: '0.4s' }}>
-              <div className="stat-icon stat-icon-monthly">M</div>
               <div className="stat-info">
                 <div className="stat-value">{monthlyGoals.length}</div>
                 <div className="stat-label">Monthly Goals</div>
               </div>
             </div>
             <div className="stat-card glass animate-fadeIn" style={{ animationDelay: '0.5s' }}>
-              <div className="stat-icon stat-icon-target">TT</div>
               <div className="stat-info">
                 <div className="stat-value">{targetTopics.length}</div>
                 <div className="stat-label">Target Topics</div>
