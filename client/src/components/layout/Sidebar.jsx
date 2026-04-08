@@ -20,7 +20,7 @@ const Sidebar = () => {
             </defs>
           </svg>
         </div>
-        <h1 className="sidebar-title">GoalTracker</h1>
+        <h1 className="sidebar-title">Goal Achiever</h1>
       </div>
 
       <nav className="sidebar-nav">
@@ -89,7 +89,7 @@ const Sidebar = () => {
       </div>
 
       <div className="sidebar-footer">
-        <p className="sidebar-footer-text">Built with care</p>
+        <p className="sidebar-footer-text">❤️Developed By Nagmani Raj</p>
       </div>
     </aside>
   );

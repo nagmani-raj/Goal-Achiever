@@ -134,18 +134,42 @@
 }
 
 .topic-header {
+  width: 100%;
   padding: 20px 24px 16px;
   display: flex;
   flex-direction: column;
   gap: 12px;
   background: rgba(108, 92, 231, 0.04);
   border-bottom: 1px solid var(--border-color);
+  text-align: left;
+  cursor: pointer;
 }
 
 .topic-title-row {
   display: flex;
   align-items: center;
   gap: 12px;
+}
+
+.topic-arrow {
+  width: 28px;
+  height: 28px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-secondary);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.04);
+  transition: transform var(--transition-fast), color var(--transition-fast), background var(--transition-fast);
+  flex-shrink: 0;
+}
+
+.topic-arrow.expanded {
+  transform: rotate(0deg);
+}
+
+.topic-card.collapsed .topic-arrow {
+  transform: rotate(-90deg);
 }
 
 .topic-number {
@@ -195,6 +219,10 @@
   border-radius: 6px;
   transition: all var(--transition-fast);
   opacity: 0;
+}
+
+.topic-delete-btn-wrap {
+  display: inline-flex;
 }
 
 .topic-card:hover .topic-delete-btn {
